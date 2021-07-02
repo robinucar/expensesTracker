@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from '../Chart/Chart';
 
 const ExpensesChart = ({ expenses }) => {
+  const [chartVisibility, setChartVisibility] = useState(false);
   const chartData = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },
@@ -22,9 +23,20 @@ const ExpensesChart = ({ expenses }) => {
     chartData[expenseMonth].value += expense.amount;
   }
 
+  const showChartHandler = () => {
+    setChartVisibility(true);
+  };
+  const hideChartHandler = () => {
+    setChartVisibility(false);
+  };
   return (
     <div>
-      <Chart dataPoints={chartData} />
+      {!chartVisibility && (
+        <button onClick={showChartHandler}>Show Expenses Chart</button>
+      )}
+      {chartVisibility && (
+        <Chart dataPoints={chartData} hideChart={hideChartHandler} />
+      )}
     </div>
   );
 };
