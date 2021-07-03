@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Chart from '../Chart/Chart';
+import '../Chart/Chart.css';
 
 const ExpensesChart = ({ expenses }) => {
   const [chartVisibility, setChartVisibility] = useState(false);
@@ -32,7 +33,11 @@ const ExpensesChart = ({ expenses }) => {
   return (
     <div>
       {!chartVisibility && (
-        <button onClick={showChartHandler}>Show Expenses Chart</button>
+        <div className='chart-button'>
+          <button className='chart-button__action' onClick={showChartHandler}>
+            Show Expenses Chart
+          </button>
+        </div>
       )}
       {chartVisibility && (
         <Chart dataPoints={chartData} hideChart={hideChartHandler} />

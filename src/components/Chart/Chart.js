@@ -17,7 +17,11 @@ const Chart = ({ dataPoints, hideChart }) => {
           />
         ))}
       </div>
-      <button onClick={hideChart}>Hide Chart</button>
+      <div className='chart-button'>
+        <button className='chart-button__action' onClick={hideChart}>
+          Hide Chart
+        </button>
+      </div>
     </>
   );
 };
